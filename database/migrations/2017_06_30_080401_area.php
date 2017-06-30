@@ -14,6 +14,7 @@ class Area extends Migration
     {
         Schema::create('area', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name_area');
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ class Institucion extends Migration
         Schema::create('tipo_institucion', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('pais');
         });
     }
 

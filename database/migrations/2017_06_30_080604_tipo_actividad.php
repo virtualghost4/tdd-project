@@ -15,6 +15,7 @@ class TipoActividad extends Migration
         Schema::create('tipo_actividad', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('name_tipo_actividad');
         });
     }
 

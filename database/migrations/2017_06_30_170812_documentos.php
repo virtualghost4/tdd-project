@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TipoConvenio extends Migration
+class Documentos extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,8 @@ class TipoConvenio extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_convenio', function (Blueprint $table) {
+        Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_tipo_convenio');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ class TipoConvenio extends Migration
      */
     public function down()
     {
-        Schema::drop('tipo_convenio');
+        Schema::drop('documentos');
     }
 }
