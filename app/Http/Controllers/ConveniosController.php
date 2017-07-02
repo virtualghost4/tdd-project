@@ -4,26 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Http\Requests;
+
+use App\Convenio;
 
 class ConveniosController extends Controller
 {
+
+
+
   public function index(){
 
-		$convenios= Convenios::all();
+
+		$convenios= Convenio::all();
 		return view('convenios.index')->with('convenios',$convenios);
 
 
     }
 
     public function create(){
-        return view('convenios.create');
+
+        // return view('convenios.create');
 
     }
         
+
     public function store(Request $request){
         
-        $convenio = Impresora::create($request->all());
+        $convenio = Convenio::create($request->all());
         $convenio->save();
         flash('Convenio ingresado exitosamente','success');
         return redirect('convenios');
