@@ -15,7 +15,13 @@
                 <tr>
                     <td>{{$tipoconvenio->id}}</td>
                     <td>{{$tipoconvenio->name}}</td>
-                    <td><a href="" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> </a>  <a href="{{route('admin.tipoconvenio.destroy',$tipoconvenio->id)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
+                    <td><a href="" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                        </a>
+                        <a href="{{route('admin.tipoconvenio.destroy',$tipoconvenio->id)}}" onclick="confirm('¿Seguro que desea Borrar?')" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
         </tbody>

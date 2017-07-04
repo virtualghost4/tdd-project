@@ -87,6 +87,8 @@ class TipoConvenioController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $tipoconvenio = TipoConvenio::find($id);
+        $tipoconvenio->delete();
+        return redirect()-> route('admin.tipoconvenio.index');
     }
 }
