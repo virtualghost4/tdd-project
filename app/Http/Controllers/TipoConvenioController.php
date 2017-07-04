@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Http\Requests;
+use App\TipoConvenio;
 
 class TipoConvenioController extends Controller
 {
@@ -36,7 +38,10 @@ class TipoConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        
+        $tipoconvenio = new TipoConvenio($request->all());
+        $tipoconvenio->save();
+        dd($tipoconvenio);
     }
 
     /**

@@ -14,7 +14,7 @@ class TipoConvenio extends Migration
     {
         Schema::create('tipo_convenio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_tipo_convenio');
+            $table->string('name');
             $table->timestamps();
         });
     }
