@@ -14,7 +14,7 @@
                 <tr>
                     <td>{{$tipoconvenio->id}}</td>
                     <td>{{$tipoconvenio->name}}</td>
-                    <td><a href="" class="btn btn-danger"> </a> <a href="" class="btn btn-warning"></a></td>
+                    <td><a href="" class="btn btn-danger"> </a>  <a href="" class="btn btn-warning"></a></td>
                 </tr>
                 @endforeach
         </tbody>
