@@ -5,7 +5,7 @@
 <br>
 <div class="row">
   <div class="col-xs-6 col-md-4">
-    <a href="#" class="btn btn-primary">Añadir un Área<a/>
+    <a href="#" class="btn btn-primary">Añadir una Institutocion<a/>
     </div>
 </div>
  
@@ -17,34 +17,22 @@
                 <th>NOMBRE</th>
                 <th>TIPO</th>
                 <th>PAIS</th>
-             
-
                 <th>Accion</th>
-
             </tr>
         </thead>
-
         <tbody>
-
-        @foreach($institucion as $institucion)
-            
+        @foreach($instituciones as $institucion)
             <tr>
                 <td>{{ $institucion->id_institucion}}</td>
                 <td>{{ $institucion->nombre}}</td>
                 <td>{{ $institucion->tipo}}</td>
                 <td>{{ $institucion->pais}}</td>
-
-   
-
-               
                 <td>
                 <a href="" class="btn btn-success">Editar</a>
                 <a href="" class="btn btn-danger" >Eliminar</a>    
-                </td>  
+                </td>
             </tr>
         @endforeach
-
-
         </tbody>
     </table>
 

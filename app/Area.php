@@ -8,6 +8,6 @@ class Area extends Model
 {
     protected $fillable = ['id_area','nombre'];
 
-    public $incremeting = true;
+    public $incrementing = true;
 }
  

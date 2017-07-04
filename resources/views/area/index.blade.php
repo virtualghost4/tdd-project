@@ -24,7 +24,7 @@
 
         <tbody>
 
-        @foreach($areas as $area)
+        @foreach($area as $area)
             
             <tr>
                 <td>{{ $area->id_area}}</td>

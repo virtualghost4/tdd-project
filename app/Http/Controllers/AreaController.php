@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Area;
+use App\Institucion;
 
 class AreaController extends Controller
 {
      public function index(){
 
 
-		$areas = Area::all();
-		return view('area.index')->with('areas',$areas);
+		$area = Area::all();
+		return view('area.index')->with('area',$area);
 
 
     }

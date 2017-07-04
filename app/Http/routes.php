@@ -23,7 +23,7 @@ Route::resource('convenios', 'ConveniosController');
 
 Route::resource('area', 'AreaController');
 
-Route::resource('institucion', 'InstitucionController');
+Route::resource('instituciones', 'InstitucionesController');
 
 Route::group(['conv'=>'convenios'],function(){
 
@@ -43,9 +43,9 @@ Route::group(['ar'=>'area'],function(){
 
 Route::group(['inst'=>'institucion'],function(){
 
-	Route::get('/institucion','InstitucionController@index');
-	Route::get('create','InstitucionController@create');
-	Route::get('eliminar','InstitucionController@destroy');
-	Route::post('store',['inst'=>'store','uses'=>'InstitucionController@store']);
+	Route::get('/instituciones','InstitucionesController@index');
+	Route::get('create','InstitucionesController@create');
+	Route::get('eliminar','InstitucionesController@destroy');
+	Route::post('store',['inst'=>'store','uses'=>'InstitucionesController@store']);
 });
 

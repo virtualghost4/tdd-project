@@ -3,9 +3,9 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAreaTable extends Migration
+class CreateInstitucionesTable extends Migration
 {
-    /**
+     /**
      * Run the migrations.
      *
      * @return void
@@ -13,10 +13,12 @@ class CreateAreaTable extends Migration
     public function up()
     {
     
-        Schema::create('areas', function (Blueprint $table) {
+        Schema::create('instituciones', function (Blueprint $table) {
 
-            $table->increments('id_area');
+            $table->increments('id_institucion');
             $table->string('nombre');
+            $table->string('tipo');
+            $table->string('pais');
            
       /*      $table->foreign('id_area')->references('id_area')->on('areas');
             $table->foreign('id_coordinador')->references('id_coordinador')->on('coordinadores');
@@ -35,10 +37,6 @@ class CreateAreaTable extends Migration
     public function down()
     {
 
-        Schema::drop('areas');
+        Schema::drop('instituciones');
     }
-
-    
-
-    
 }
