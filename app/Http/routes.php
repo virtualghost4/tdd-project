@@ -18,4 +18,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'],function(){
 
     Route::resource('tipoconvenio','TipoConvenioController');
+    Route::get('tipoconvenio/{id}/destroy',[
+            'uses' => '(TipoConveniosController@destroy',
+            'as'   => 'admin.tipoconvenio.destroy'
+        ]);
 });

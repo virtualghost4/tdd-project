@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.css')}}">
 </head>
 <body>
-    
-    @include('admin.template.nav')
-    
+@include('admin.template.nav')
+<div>
     <section>
+
         @yield('contenido')
     </section>
+</div>
+    
+
+    
+
+</body>
 </html>
