@@ -17,7 +17,8 @@ class TipoConvenioController extends Controller
      */
     public function index()
     {
-        
+        $tipoconvenios = TipoConvenio::orderBy('id','ASC')->paginate(10);
+        return view('admin.tipoconvenio.index')->with('tipoconvenios', $tipoconvenios);
     }
 
     /**
