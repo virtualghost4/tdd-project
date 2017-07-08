@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Documento extends Model
 {
-    Protected $table= "Documento";
     Protected $fillable= [
     "id_documento",
     "id_convenios",
@@ -14,4 +13,14 @@ class Documento extends Model
     "fecha_decreto",
     "nro_decreto"
     ];
+
+    public $incrementing = true;
+
+    /*
+    public function Convenio(){
+
+        return $this->belongsTo('App\Convenio');
+
+    }
+    */
 }
