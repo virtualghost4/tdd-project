@@ -6,7 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Institucion extends Model
 {
-    protected $fillable = ['id_institucion','nombre','tipo','pais'];
+    protected $table = 'Instituciones';
 
-    public $incrementing = true;
+    protected $fillable = [
+    	'id_institucion',
+    	'nombre_institucion',
+    	'pais',
+    	'vigente',
+    	'id_internacional',
+    	'rut_institucion',
+    	'razon_social',
+		'direccion',
+		'telefono',
+		'email',
+		'link_institucion',
+    ];
 }

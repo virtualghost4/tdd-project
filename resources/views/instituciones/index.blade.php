@@ -2,38 +2,70 @@
 
 @section('content')
 
-<br>
-<div class="row">
-  <div class="col-xs-6 col-md-4">
-    <a href="#" class="btn btn-primary">Añadir una Institutocion<a/>
-    </div>
-</div>
- 
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-4">
+            <a href="instituciones/create" class="btn btn-primary">Añadir Nueva Institucion<a/>
+        </div>
+        <table class="table table-bordered table-resposive">
+            <thead>
+                <tr>
+                    <th>id_institucion</th>
+                    <th>nombre_institucion</th>
+                    <th>pais</th>
+                    <th>vigente</th>
+                    <th>id_internacional</th>
+                    <th>rut_institucion</th>
+                    <th>razon_social</th>
+                    <th>direccion</th>
+                    <th>telefono</th>
+                    <th>email</th>
+                    <th>link_institucion</th>
+                    <th>accion</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            @foreach($instituciones as $institucion)
+                
+                <tr>
+
+                    <td>{{ $institucion-> id_institucion }}</td>
+                    <td>{{ $institucion-> nombre_institucion }}</td>
+                    <td>{{ $institucion-> pais }}</td>
+                    <td>{{ $institucion-> vigente }}</td>
+                    <td>{{ $institucion-> id_internacional }}</td>
+                    <td>{{ $institucion-> rut_institucion }}</td>
+                    <td>{{ $institucion-> razon_social }}</td>
+                    <td>{{ $institucion-> direccion }}</td>
+                    <td>{{ $institucion-> telefono }}</td>
+                    <td>{{ $institucion-> email }}</td>
+                    <td>{{ $institucion-> link_institucion }}</td>
      
-  <table class="table table-bordered table-resposive">
-        <thead>
-            <tr>
-                <th>ID INSTITUCION</th>
-                <th>NOMBRE</th>
-                <th>TIPO</th>
-                <th>PAIS</th>
-                <th>Accion</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($instituciones as $institucion)
-            <tr>
-                <td>{{ $institucion->id_institucion}}</td>
-                <td>{{ $institucion->nombre}}</td>
-                <td>{{ $institucion->tipo}}</td>
-                <td>{{ $institucion->pais}}</td>
-                <td>
-                <a href="" class="btn btn-success">Editar</a>
-                <a href="" class="btn btn-danger" >Eliminar</a>    
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    <td>
+
+                        {{ Form::open(array('url' => 'instituciones' . $institucion->id_institucion, 'class' => 'pull-right')) }}
+                            {{ Form::hidden('_method', 'DELETE') }}
+                            {{ Form::submit('Borrar', array('class' => 'btn btn-danger')) }}
+
+                            {{ Form::hidden('_method', 'EDIT') }}
+                            {{ Form::submit('Editar', array('class' => 'btn btn-warning')) }}
+                        {{ Form::close() }}
+
+                        <!--<a href="instituciones/edit" class="btn btn-success">Editar</a>-->
+                        <!--<a href="instituciones/destroy" class="btn btn-danger" >Eliminar</a> -->   
+                    </td>  
+                </tr>
+            @endforeach
+
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+
+
 
  @endsection

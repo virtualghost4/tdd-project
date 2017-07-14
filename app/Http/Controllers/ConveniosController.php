@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Requests;
-
+use DB;
 use App\Convenio;
+use App\Area;
+use View;
+use Illuminate\Support\Facades\Input;
 
 class ConveniosController extends Controller
 {
@@ -17,103 +20,103 @@ class ConveniosController extends Controller
   public function index(){
 
 
-		$convenios= Convenio::all();
-		return view('convenios.index')->with('convenios',$convenios);
+        $convenios = Convenio::all();
+
+
+        return view('convenios.index')->with('convenios',$convenios);
 
 
     }
 
     public function create(){
 
-        // return view('convenios.create');
+    $areas =  Area::pluck('nombre_area','id_area');
+
+    return view('convenios.createconvenios')->with('areas',$areas);
+   
 
     }
         
 
     public function store(Request $request){
         
-        $convenio = Convenio::create($request->all());
+      
+    /*  
+        $input =Input::all();
+*/
+    
+        $convenio = new Convenio();
+        $convenio->nombre_convenio=$request->input('nombre_convenio');
+        $convenio->tipo_convenio=$request->input('tipo_convenio');
+        $convenio->id_area=Input::get('id_area');
+        $convenio->fecha_de_inicio=$request->input('fecha_de_inicio');
+        $convenio->fecha_termino=$request->input('fecha_termino');
+        $convenio->estado=$request->input('estado');
+        $convenio->fecha_firma=$request->input('fecha_firma');
+        $convenio->fecha_decreto=$request->input('fecha_decreto');
+        $convenio->nombre_coordinador=$request->input('nombre_coordinador');
+        $convenio->objetivo=$request->input('objetivo');
+        $convenio->m_colaboracion=$request->input('m_colaboracion');
+        $convenio->nombre_institucion=$request->input('nombre_institucion');
+        $convenio->actividades=$request->input('actividades');
+
+    
+
+     flash('Convenio ingresado correctamente','success');
+
+
+    //  Session::flash('mensaje', 'Horario cargado con éxito');
+
+
         $convenio->save();
-        flash('Convenio ingresado exitosamente','success');
+        
+        
         return redirect('convenios');
         }
-/*
-    public function index(){
-
-		$equipos = Impresora::all();
-		return view('impresoras.index')->with('equipos',$equipos);
 
 
-    }
-
-    public function create(){
-        return view('impresoras.create');
-
-    }
-        
-    public function store(Request $request){
-        
-        $impresora = Impresora::create($request->all());
-        $impresora->save();
-        flash('Impresora ingresada correctamente','success');
-        return redirect('equipos');
-        }
-
-    public function edit($numero_de_serie){
+public function edit($id_convenio){
             
+    $areas =  Area::pluck('nombre_area','id_area');
 
-        $impresora=Impresora::find($numero_de_serie);
 
-        return view('impresoras.edit')->with('impresora',$impresora);
+    $convenio = Convenio::find($id_convenio);
+
+
+        return view('convenios.editconvenios')->with('convenio',$convenio)->with('areas',$areas);
 
     }
-    public function update(Request $request, $numero_de_serie){
+    public function update(Request $request, $id_convenio){
             
-        $impresora = Impresora::find($numero_de_serie);
+        $convenio = Convenio::find($id_convenio);
 
-        $impresora->fill($request->all());
+        $convenio->nombre_convenio=$request->input('nombre_convenio');
+        $convenio->tipo_convenio=$request->input('tipo_convenio');
+        $convenio->id_area=Input::get('id_area');
+        $convenio->fecha_de_inicio=$request->input('fecha_de_inicio');
+        $convenio->fecha_termino=$request->input('fecha_termino');
+        $convenio->estado=$request->input('estado');
+        $convenio->fecha_firma=$request->input('fecha_firma');
+        $convenio->fecha_decreto=$request->input('fecha_decreto');
+        $convenio->nombre_coordinador=$request->input('nombre_coordinador');
+        $convenio->objetivo=$request->input('objetivo');
+        $convenio->m_colaboracion=$request->input('m_colaboracion');
+        $convenio->nombre_institucion=$request->input('nombre_institucion');
+        $convenio->actividades=$request->input('actividades');
 
-        $impresora->save();
+    
 
-        return redirect('equipos');
+        $convenio->save();
+
+        return redirect('convenios');
 
     }
-    public function destroy($numero_de_serie){
+
+    public function destroy($id_convenio){
         
-        if(Arriendo::where('numero_de_serie',$numero_de_serie)->count()>0){
-            $cliente = Arriendo::where('numero_de_serie',$numero_de_serie)->select('rut')->get(1);
-            foreach($cliente as $ct){
-                $cte=$ct->rut;
-                break;
-            }
-            flash('Impresora vinculado a el cliente rut '.$cte.', desvincule el equipos del cliente para poder eliminarlo','danger');
-            return redirect('equipos');
-
-        }else{
-            $equipo = Impresora::find($numero_de_serie);
-            $equipo->delete();
-            return redirect('equipos');
-        }
-                    
-
-
+        $convenio = Convenio::where('id_convenio','=',$id_convenio);
+        $convenio->delete();
+        return redirect('convenios');
     }
-
-
-
-    public function equiposSinCliente($rut){
-
-    	$equipos = DB::table('impresoras')->whereNotIn('numero_de_serie',
-    	function($query){
-    		$query->select('numero_de_serie')->from('arriendos')->whereRaw('impresoras.numero_de_serie = arriendos.numero_de_serie');
-    	})->get();
-
-        $nombre = Cliente::find($rut);
-
-    	return view('impresoras.sinvincular')->with('equipos',$equipos)->with('rut',$rut)->with('nombre',$nombre);
-
-
-
-    }*/
 }
 

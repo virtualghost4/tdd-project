@@ -7,9 +7,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Bienvenido</div>
-
-                <div class="panel-body">
-                    Bienvenido al Sistema  Web DRI  </div>
+                <div class="panel-body"> Bienvenido al Sistema Web DRI </div>
             </div>
         </div>
     </div>

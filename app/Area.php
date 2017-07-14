@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-    protected $fillable = ['id_area','nombre'];
+	protected $table 'areas';
+    protected $fillable = ['id_area','nombre_area'];
 
-    public $incrementing = true;
+    public $incremeting = true;
+
+     public function convenio(){
+
+    	return $this->hasMany('App\Convenio');	
+
+    }
 }
- 
+
