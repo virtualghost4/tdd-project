@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Area extends Model
+class Estado extends Model
 {
-	protected $table = 'areas';
-    protected $fillable = ['id_area','nombre_area'];
-    protected $primaryKey = 'id_area';
+	protected $table = 'estados';
+    protected $fillable = ['id_estado','nombre_estado'];
+    protected $primaryKey = 'id_estado';
     public $incremeting = true;
 
      public function convenio(){
@@ -17,4 +17,3 @@ class Area extends Model
 
     }
 }
-

@@ -16,26 +16,22 @@ Route::get('/', function () {
 });
 
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
-
 Route::resource('convenios', 'ConveniosController');
-
-Route::resource('area', 'AreaController');
-
-Route::group(['conv'=>'convenios'],function(){
-
-	Route::get('/convenios','ConveniosController@index');
-	Route::get('create','ConveniosController@create');
-	Route::get('eliminar','ConveniosController@destroy');
-	Route::post('store',['as'=>'store','uses'=>'ConveniosController@store']);
-});
-
-Route::group(['ar'=>'area'],function(){
-
-	Route::get('/area','AreaController@index');
-	Route::get('create','AreaController@create');
-	Route::get('eliminar','AreaController@destroy');
-	Route::post('store',['as'=>'store','uses'=>'AreaController@store']);
-});
-
+Route::get('convenios/{id_convenio}/destroy',[
+		'uses' =>'ConveniosController@destroy',
+		'as' =>'convenios.destroy'
+	]);
+Route::resource('areas', 'AreasController');
+Route::resource('instituciones', 'InstitucionesController');
+Route::get('instituciones/{id_institucion}/destroy',[
+		'uses' =>'InstitucionesController@destroy',
+		'as' =>'instituciones.destroy'
+	]);
+Route::resource('actividadesconvenios','ActividadesConveniosController');
+Route::resource('coordinadores','CoordinadoresController');
+Route::resource('estados','EstadosController');
+Route::resource('modalidades','ModalidadesController');
+Route::resource('objetivos','ObjetivosController');
+Route::resource('documentos','DocumentosController');
+Route::resource('tipoconvenios','TipoConveniosController');

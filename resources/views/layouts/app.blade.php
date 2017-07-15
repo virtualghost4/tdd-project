@@ -46,20 +46,46 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
+                @if(Auth::guest())
+                @else
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/convenios') }}">Convenios</a></li>
                 </ul>
                    <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/area') }}">Area</a></li>
+                    <li><a href="{{ url('/areas') }}">Area</a></li>
                 </ul>
-
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/instituciones') }}">Instituciones</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/actividadesconvenios') }}">Actividades Convenio</a></li>
+                </ul>
+                   <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/coordinadores') }}">Coordinadores</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/modalidades') }}">Modalidades</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/estados') }}">Estados</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/tipoconvenios') }}">Tipo Convenio</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/objetivos') }}">Objetivo</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/documentos') }}">Documentos</a></li>
+                </ul>
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/register') }}">Registro</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -67,8 +93,9 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
                             </ul>
+
                         </li>
                     @endif
                 </ul>
